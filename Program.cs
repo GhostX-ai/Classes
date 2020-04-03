@@ -89,6 +89,23 @@ namespace Classes
             {
                 goto x1;
             }
+
+            Programer pr = new Programer();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Click\n1 to eat\n2 to sleep\n3 to code:");
+            int chs = Convert.ToInt32(Console.ReadKey().KeyChar.ToString());
+            switch (chs)
+            {
+                case 1:
+                    pr.eat();
+                    break;
+                case 2:
+                    pr.sleep();
+                    break;
+                case 3: pr.code();
+                    break;
+            }
             Console.ReadKey();
         }
         public static string EnterValue(string val)
@@ -96,6 +113,21 @@ namespace Classes
             Console.WriteLine(val + ":");
             string s = Console.ReadLine();
             return s;
+        }
+    }
+    class Programer
+    {
+        public void sleep()
+        {
+            Console.WriteLine("I'm sleeping don't worry me!");
+        }
+        public void eat()
+        {
+            Console.WriteLine("I'm eating don't worry me!");
+        }
+        public void code()
+        {
+            Console.WriteLine("I'm coding don't worry me!");
         }
     }
     class Rectangle
