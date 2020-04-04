@@ -20,76 +20,37 @@ namespace Classes
 
             Console.ReadKey();
 
-            List<Book> books = new List<Book>();
-            List<Title> titles = new List<Title>();
-            List<Content> contents = new List<Content>();
-            List<Author> authors = new List<Author>();
-            x1:
             Console.Clear();
-            Console.WriteLine("Books:");
-            foreach (var x in books)
-            {
-                x.Show();
-            }
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Titles:");
-            foreach (var x in titles)
-            {
-                x.Show();
-            }
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Authors:");
-            foreach (var x in authors)
-            {
-                x.Show();
-            }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Content:");
-            foreach (var x in contents)
-            {
-                x.Show();
-            }
-            bool w = true;
-            Console.WriteLine("Click \n1 to add book\n2 to add title\n3 to add author\n4 to add\n5 to go to next task");
-            int ch = int.Parse(Console.ReadKey().KeyChar.ToString());
-            Console.ForegroundColor = ConsoleColor.Gray;
-            switch (ch)
-            {
-                case 1:
-                    {
-                        string bk = EnterValue("Book");
-                        books.Add(new Book() { book = bk });
-                    }
-                    break;
-                case 2:
-                    {
-                        string ttl = EnterValue("Title");
-                        titles.Add(new Title() { title = ttl });
-                    }
-                    break;
-                case 3:
-                    {
-                        string athr = EnterValue("Author");
-                        authors.Add(new Author() { author = athr });
-                    }
-                    break;
-                case 4:
-                    {
-                        string cn = EnterValue("Content");
-                        contents.Add(new Content() { content = cn });
-                    }
-                    break;
-                case 5:
-                    {
-                        w = false;
-                    }
-                    break;
-            }
-            if (w)
-            {
-                goto x1;
-            }
 
+
+            Console.WriteLine("Now you are adding some book!");
+
+            Console.WriteLine("Write a title of book:");
+            string title1 = Console.ReadLine();
+
+            Console.WriteLine("Write a author of book:");
+            string author1 = Console.ReadLine();
+
+            Console.WriteLine("Write a content of book:");
+            string content1 = Console.ReadLine();
+
+            Book book = new Book()
+            {
+                author = new Author() { author = author1 },
+                content = new Content() { content = content1 },
+                title = new Title() { title = title1 }
+            };
+
+            Console.WriteLine("Book:");
+            Console.ForegroundColor = ConsoleColor.Red;
+            book.title.Show();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            book.author.Show();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            book.content.Show();
+            Console.WriteLine("Please click to some button to continue");
+            Console.ReadKey();
+            Console.Clear();
             Programer pr = new Programer();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
@@ -103,7 +64,8 @@ namespace Classes
                 case 2:
                     pr.sleep();
                     break;
-                case 3: pr.code();
+                case 3:
+                    pr.code();
                     break;
             }
             Console.ReadKey();
@@ -156,11 +118,9 @@ namespace Classes
     }
     class Book
     {
-        public string book { get; set; }
-        public void Show()
-        {
-            Console.WriteLine(this.book);
-        }
+        public Author author { get; set; }
+        public Title title { get; set; }
+        public Content content { get; set; }
     }
     class Title
     {
